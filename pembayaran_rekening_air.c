@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int validasi(){
 	int angka;
@@ -39,7 +40,6 @@ int inputan(){
 }
 
 
-
 int main(){
 
 	/*	DEKRALASI VARIABEL	*/
@@ -50,6 +50,7 @@ int main(){
 	float tarif;		//TARIF PEMAKAIAN AIR
 	int pilihan;		//UNTUK PILIHAN SUBSIDI ATAU TIDAK || UNTUK MENGETAHUI JENIS NIAGA
 
+	system("cls");
 	printf("\n========== Program Menghitung  ============\n");
 	printf("========== Pemakaian Air PDAM  ============\n");
 	printf(">>>>>      1. Rumah Tangga           <<<<<<\n");
@@ -383,7 +384,23 @@ int main(){
 			}
 		}
 	}
-	printf("TOTAL penggunaan air bulan ini = %d\n", total_air);
-	printf("TOTAL pembayaran = Rp %.2f\n", tarif);
-
+	system("cls");
+	FILE *file; //TAMBAHAN
+    file=fopen("pdam_baru.txt", "w"); //TAMBAHAN
+    fprintf(file,"\t\t\t====================================================================\n");
+    fprintf(file,"\t\t\t|                        BUKTI PEMBAYARAN                          |\n");
+    fprintf(file,"\t\t\t====================================================================\n");
+    fprintf(file,"\t\t\t====================================================================\n");
+    fprintf(file,"\t\t\t| Penggunaan air bulan lalu       | %d M^3\n", air_l);
+    fprintf(file,"\t\t\t| Penggunaan air bulan ini        | %d M^3\n", air_s);
+    fprintf(file,"\t\t\t| Total penggunaan air bulan ini  | %d M^3\n", total_air);
+    fprintf(file,"\t\t\t__________________________________|_________________________________\n\n");
+    fprintf(file,"\t\t\t                 | TOTAL PEMBAYARAN | Rp %.2f\n", tarif);
+    fprintf(file,"\t\t\t                 ===================================================");
+    fclose(file); //TAMBAHAN
+    printf("\t\t\t====================================================================\n"); //TAMBAHAN
+    printf("\t\t\t|        PEMBAYARAN BERHASIL, BUKTI PEMBAYARAN AKAN DICETAK        |\n"); //TAMBAHAN
+    printf("\t\t\t|                   Klik enter untuk melanjutkan                   |\n"); //TAMBAHAN
+    printf("\t\t\t====================================================================\n"); //TAMBAHAN
+    getchar();
 }
